@@ -88,65 +88,64 @@
   </footer>
 
   <script>
-    // Base de datos simulada en JS
-    const camisetas = [
-     {
-        año: 1986,
-        torneo: "Amistoso contra Brasil 7 de mayo de 1986",
-        tipo: "Local",
-        imagen: "https://github.com/dacf01/P-gina-web-museo-selecci-n-chilena/blob/main/formacion-chile-amistoso-7-mayo-1986.jpg",
-        rareza: "Rara",
-        descripcion: "Camiseta Umbro usada únicamente en este partido,con una versión exclusiva del escudo de la selección chilena."
-      },
-      {
-        año: 1986,
-        torneo: "Juegos ODESUR 86",
-        tipo: "Local",
-        imagen: "https://github.com/dacf01/P-gina-web-museo-selecci-n-chilena/blob/main/Captura%20de%20pantalla%202025-10-13%20231352.png",
-        rareza: "Muy rara",
-        descripcion: "Usada durante los Juegos ODESUR 1986. Diseño con cuello blanco en V con solapa y franjas verticales en el torso."
-      },
-
-      {
-        año: 1987,
-        torneo: "Mundial Sub-20 modelo 1",
-        tipo: "Local",
-        imagen: "https://github.com/dacf01/P-gina-web-museo-selecci-n-chilena/blob/main/images%20(1).jpeg",
-        rareza: "Rara",
-        descripcion: "Versión especial del Sub-20 de 1987, con cuello en V, solapa y detalles únicos no repetidos."
-      },
-      {
-        año: 1987,
-        torneo: "Mundial Sub-20 modelo 1",
-        tipo: "Suplente",
-        imagen: "https://github.com/dacf01/P-gina-web-museo-selecci-n-chilena/blob/main/Imagen%20de%20WhatsApp%202025-10-04%20a%20las%2022.59.30_783dffd4.jpg",
-        rareza: "Rara",
-        descripcion: "Versión especial del Sub-20 de 1987, con cuello redondo sin solapa cuando lo usual en esa época vistiendo Puma era con solapa."
-      },
-      {
-        año: 1987,
-        torneo: "Mundial Sub-20 modelo 2",
-        tipo: "Local",
-        imagen: "https://github.com/dacf01/P-gina-web-museo-selecci-n-chilena/blob/main/Captura%20de%20pantalla%202025-10-13%20232737.png",
-        rareza: "Rara",
-        descripcion: "Versión especial del Sub-20 de 1987, con cuello en V más alargado que en el modelo de 1985."
-      },
-      {
-        año: 1987,
-        torneo: "Mundial Sub-20 modelo 2",
-        tipo: "Suplente",
-        imagen: "https://github.com/dacf01/P-gina-web-museo-selecci-n-chilena/blob/main/Captura%20de%20pantalla%202025-10-13%20232926.png",
-        rareza: "Rara",
-        descripcion: "Versión especial del Sub-20 de 1987, con cuello en V y detalles en color rojo cuando lo usual era detalles en azul para la suplente."
-      },
-      {año: 2024,
-        torneo: "Rueda de prensa Colección Adicolor 2024",
-        tipo: "Alternativa",
-        imagen: "https://github.com/dacf01/P-gina-web-museo-selecci-n-chilena/blob/main/Captura%20de%20pantalla%202025-03-31%20221225.png",
-        rareza: "Rara",
-        descripcion: "Utilizada en ruedas de prensa,disponible en tiendas. Estilo minimalista y moderno."
-      }
-    ];
+const camisetas = [
+  {
+    año: 1986,
+    torneo: "Amistoso contra Brasil 7 de mayo de 1986",
+    tipo: "Local",
+    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/formacion-chile-amistoso-7-mayo-1986.jpg",
+    rareza: "Rara",
+    descripcion: "Camiseta Umbro usada únicamente en este partido, con una versión exclusiva del escudo de la selección chilena."
+  },
+  {
+    año: 1986,
+    torneo: "Juegos ODESUR 86",
+    tipo: "Local",
+    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20231352.png",
+    rareza: "Muy rara",
+    descripcion: "Usada durante los Juegos ODESUR 1986. Diseño con cuello blanco en V con solapa y franjas verticales en el torso."
+  },
+  {
+    año: 1987,
+    torneo: "Mundial Sub-20 modelo 1",
+    tipo: "Local",
+    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/images%20(1).jpeg",
+    rareza: "Rara",
+    descripcion: "Versión especial del Sub-20 de 1987, con cuello en V, solapa y detalles únicos no repetidos."
+  },
+  {
+    año: 1987,
+    torneo: "Mundial Sub-20 modelo 1",
+    tipo: "Suplente",
+    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen%20de%20WhatsApp%202025-10-04%20a%20las%2022.59.30_783dffd4.jpg",
+    rareza: "Rara",
+    descripcion: "Versión especial del Sub-20 de 1987, con cuello redondo sin solapa cuando lo usual en esa época vistiendo Puma era con solapa."
+  },
+  {
+    año: 1987,
+    torneo: "Mundial Sub-20 modelo 2",
+    tipo: "Local",
+    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20232737.png",
+    rareza: "Rara",
+    descripcion: "Versión especial del Sub-20 de 1987, con cuello en V más alargado que en el modelo de 1985."
+  },
+  {
+    año: 1987,
+    torneo: "Mundial Sub-20 modelo 2",
+    tipo: "Suplente",
+    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20232926.png",
+    rareza: "Rara",
+    descripcion: "Versión especial del Sub-20 de 1987, con cuello en V y detalles en color rojo cuando lo usual era detalles en azul para la suplente."
+  },
+  {
+    año: 2024,
+    torneo: "Rueda de prensa Colección Adicolor 2024",
+    tipo: "Alternativa",
+    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-03-31%20221225.png",
+    rareza: "Rara",
+    descripcion: "Utilizada en ruedas de prensa, disponible en tiendas. Estilo minimalista y moderno."
+  }
+];
 
     const galeria = document.getElementById('galeria');
 
@@ -164,6 +163,7 @@
   </script>
 </body>
 </html>
+
 
 
 
