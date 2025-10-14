@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Museo de Camisetas de la Roja</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #c60c30;
+      color: white;
+      text-align: center;
+      padding: 2em 1em;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    header p {
+      margin: 0.5em 0 0 0;
+      font-size: 1.1em;
+    }
+
+    .grid {
+         display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1em;
+      padding: 2em;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 1em;
+    }
+
+    .card h3 {
+      margin: 0.3em 0;
+      color: #c60c30;
+    }
+
+    .card p {
+      font-size: 0.95em;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2em;
+      background-color: #eee;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Museo de Camisetas de la Roja</h1>
+    <p>Una colección única de camisetas históricas y raras de Chile 🇨🇱</p>
+  </header>
+
+<section class="grid" id="galeria">
+    <!-- Aquí se insertan dinámicamente las camisetas -->
+  </section>
+
+  <footer>
+    Proyecto personal sin fines de lucro. Fuente de imágenes: registros históricos y archivos personales.
+  </footer>
+
+  <script>
+    // Base de datos simulada en JS
+    const camisetas = [
+     {
+        año: 1986,
+        torneo: "Amistoso contra Brasil 7 de mayo de 1986",
+        tipo: "Local",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Chile_1987_shirt.svg/200px-Chile_1987_shirt.svg.png",
+        rareza: "Rara",
+        descripcion: "Camiseta Umbro usada únicamente en este partido,con una versión exclusiva del escudo de la selección chilena."
+      },
+      {
+        año: 1986,
+        torneo: "Juegos ODESUR 86",
+        tipo: "Local",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Chile_1986_shirt.svg/200px-Chile_1986_shirt.svg.png",
+        rareza: "Muy rara",
+        descripcion: "Usada durante los Juegos ODESUR 1986. Diseño con cuello blanco en V con solapa y franjas verticales en el torso."
+      },
+
+      {
+        año: 1987,
+        torneo: "Mundial Sub-20 modelo 1",
+        tipo: "Local",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Chile_1987_shirt.svg/200px-Chile_1987_shirt.svg.png",
+        rareza: "Rara",
+        descripcion: "Versión especial del Sub-20 de 1987, con cuello en V, solapa y detalles únicos no repetidos."
+      },
+      {
+        año: 1987,
+        torneo: "Mundial Sub-20 modelo 1",
+        tipo: "Suplente",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Chile_1987_shirt.svg/200px-Chile_1987_shirt.svg.png",
+        rareza: "Rara",
+        descripcion: "Versión especial del Sub-20 de 1987, con cuello redondo sin solapa cuando lo usual en esa época vistiendo Puma era con solapa."
+      },
+      {
+        año: 1987,
+        torneo: "Mundial Sub-20 modelo 2",
+        tipo: "Local",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Chile_1987_shirt.svg/200px-Chile_1987_shirt.svg.png",
+        rareza: "Rara",
+        descripcion: "Versión especial del Sub-20 de 1987, con cuello en V más alargado que en el modelo de 1985."
+      },
+      {
+        año: 1987,
+        torneo: "Mundial Sub-20 modelo 2",
+        tipo: "Suplente",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Chile_1987_shirt.svg/200px-Chile_1987_shirt.svg.png",
+        rareza: "Rara",
+        descripcion: "Versión especial del Sub-20 de 1987, con cuello en V y detalles en color rojo cuando lo usual era detalles en azul para la suplente."
+      },
+      {año: 2024,
+        torneo: "Rueda de prensa Colección Adicolor 2024",
+        tipo: "Alternativa",
+        imagen: "C:\Users\Nitro5\Desktop\proyecto labredes",
+        rareza: "Rara",
+        descripcion: "Utilizada en ruedas de prensa,disponible en tiendas. Estilo minimalista y moderno."
+      }
+    ];
+
+    const galeria = document.getElementById('galeria');
+
+    camisetas.forEach(camiseta => {
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `
+        <img src="${camiseta.imagen}" alt="Camiseta ${camiseta.año}">
+        <h3>${camiseta.año} – ${camiseta.torneo}</h3>
+        <p><strong>Tipo:</strong> ${camiseta.tipo} | <strong>Rareza:</strong> ${camiseta.rareza}</p>
+        <p>${camiseta.descripcion}</p>
+      `;
+      galeria.appendChild(div);
+    });
+  </script>
+</body>
+</html>
+
+
