@@ -117,7 +117,7 @@
       año: 1979,
       torneo: "Kit Transición Adidas 1979",
       tipo: "Local",
-      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/449182472.jpg4.jpg,
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/449182472.jpg4.jpg",
       rareza: "Rara",
       descripcion: "Primer kit con logo visible en la camiseta de Chile, usado entre el 13 de junio y el 18 de julio de 1979."
     },
@@ -168,6 +168,7 @@
       imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen%20de%20WhatsApp%202025-10-04%20a%20las%2022.59.30_783dffd4.jpg",
       rareza: "Rara",
       descripcion: "Versión especial del Sub-20 de 1987, con cuello en V blanco sin solapa cuando lo usual en esa época vistiendo Puma era con solapa y un color en el cuello que haga contraste con el blanco de la camiseta."
+    },
     {
       año: 1987,
       torneo: "Mundial Sub-20 modelo 2",
@@ -184,7 +185,7 @@
       rareza: "Rara",
       descripcion: "Detalles en rojo en vez de azul en la versión suplente a comparación del kit 1985."
     },
-       {
+    {
       año: 1990,
       torneo: "Copa Expedito Teixeira",
       tipo: "Local",
@@ -200,7 +201,7 @@
       rareza: "Rara",
       descripcion: "Color azul poco común en Brooks, usado solo en este partido."
     },
-       {
+    {
       año: 2007,
       torneo: "Camiseta Rebelde",
       tipo: "Local",
@@ -216,14 +217,14 @@
       rareza: "Rara",
       descripcion: "Kit Puma utilizado durante el conflicto legal con Brooks por la selección femenina durante todo 2008, desde el sudamericano sub-20 en marzo hasta el final del mundial en diciembre."
     },
-       {
+    {
       año: 2021,
       torneo: "Clasificatorias Qatar 2022",
       tipo: "Local",
       imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/formacion-chile-clasificatorias-catar-2022-2-septiembre-2021.jpg",
       rareza: "Rara",
       descripcion: "Camiseta usada en la triple fecha clasificicatoria de septiembre de 2021, transición realizada por KS7 entre el litigio contra Nike y la llegada de Adidas el 7 de octubre de 2021 ."
-    }
+    },
     {
       año: 2024,
       torneo: "Colección Adicolor – Rueda de prensa",
@@ -264,7 +265,6 @@
     const orden = ordenSelect.value;
 
     let filtradas = camisetas.filter(c => {
-
       const coincideTexto =
         c.año.toString().includes(texto) ||
         c.torneo.toLowerCase().includes(texto) ||
@@ -279,7 +279,6 @@
       return coincideTexto && coincideDecada && coincideTipo && coincideRareza;
     });
 
-    // ORDENAR POR AÑO
     if (orden === "asc") {
       filtradas.sort((a, b) => a.año - b.año);
     } else if (orden === "desc") {
@@ -300,6 +299,7 @@
 
 </body>
 </html>
+
 
 
 
