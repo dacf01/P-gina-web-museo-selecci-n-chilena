@@ -78,6 +78,32 @@
     <h1>Museo de Camisetas de la Roja</h1>
     <p>Una colección única de camisetas históricas y raras de Chile 🇨🇱</p>
   </header>
+  <section class="filtros">
+    <input type="text" id="buscar" placeholder="Buscar camiseta...">
+
+    <select id="decada">
+      <option value="">Todas las décadas</option>
+      <option value="1970">Años 70</option>
+      <option value="1980">Años 80</option>
+      <option value="1990">Años 90</option>
+      <option value="2000">Años 2000</option>
+      <option value="2010">Años 2010</option>
+      <option value="2020">Años 2020</option>
+    </select>
+
+    <select id="tipo">
+      <option value="">Todos los tipos</option>
+      <option value="Local">Local</option>
+      <option value="Suplente">Suplente</option>
+      <option value="Alternativa">Alternativa</option>
+    </select>
+
+    <select id="rareza">
+      <option value="">Todas las rarezas</option>
+      <option value="Rara">Rara</option>
+      <option value="Muy rara">Muy rara</option>
+    </select>
+  </section>
 
 <section class="grid" id="galeria">
     <!-- Aquí se insertan dinámicamente las camisetas -->
@@ -146,23 +172,60 @@ const camisetas = [
     descripcion: "Utilizada en ruedas de prensa, disponible en tiendas. Estilo minimalista y moderno."
   }
 ];
+const galeria = document.getElementById("galeria");
+    const buscarInput = document.getElementById("buscar");
+    const decadaSelect = document.getElementById("decada");
+    const tipoSelect = document.getElementById("tipo");
+    const rarezaSelect = document.getElementById("rareza");
 
-    const galeria = document.getElementById('galeria');
+    function mostrarCamisetas(lista) {
+      galeria.innerHTML = "";
+      lista.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <img src="${c.imagen}" alt="Camiseta ${c.año}">
+          <h3>${c.año} – ${c.torneo}</h3>
+          <p><strong>Tipo:</strong> ${c.tipo} | <strong>Rareza:</strong> ${c.rareza}</p>
+          <p>${c.descripcion}</p>
+        `;
+        galeria.appendChild(div);
+      });
+    }
+   function filtrar() {
+      const texto = buscarInput.value.toLowerCase();
+      const decada = decadaSelect.value;
+      const tipo = tipoSelect.value;
+      const rareza = rarezaSelect.value;
 
-    camisetas.forEach(camiseta => {
-      const div = document.createElement('div');
-      div.className = 'card';
-      div.innerHTML = `
-        <img src="${camiseta.imagen}" alt="Camiseta ${camiseta.año}">
-        <h3>${camiseta.año} – ${camiseta.torneo}</h3>
-        <p><strong>Tipo:</strong> ${camiseta.tipo} | <strong>Rareza:</strong> ${camiseta.rareza}</p>
-        <p>${camiseta.descripcion}</p>
-      `;
-      galeria.appendChild(div);
-    });
+      const filtradas = camisetas.filter(c => {
+        const coincideTexto =
+          c.año.toString().includes(texto) ||
+          c.torneo.toLowerCase().includes(texto) ||
+          c.tipo.toLowerCase().includes(texto) ||
+          c.rareza.toLowerCase().includes(texto) ||
+          c.descripcion.toLowerCase().includes(texto);
+
+        const coincideDecada = decada === "" || Math.floor(c.año / 10) * 10 == decada;
+        const coincideTipo = tipo === "" || c.tipo === tipo;
+        const coincideRareza = rareza === "" || c.rareza === rareza;
+
+        return coincideTexto && coincideDecada && coincideTipo && coincideRareza;
+      });
+
+      mostrarCamisetas(filtradas);
+    }
+
+    buscarInput.addEventListener("input", filtrar);
+    decadaSelect.addEventListener("change", filtrar);
+    tipoSelect.addEventListener("change", filtrar);
+    rarezaSelect.addEventListener("change", filtrar);
+
+    mostrarCamisetas(camisetas);
   </script>
 </body>
 </html>
+
 
 
 
