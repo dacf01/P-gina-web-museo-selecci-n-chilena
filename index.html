@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Museo de Camisetas de la Roja</title>
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,18 +21,18 @@
       padding: 2em 1em;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-
-    header p {
-      margin: 0.5em 0 0 0;
-      font-size: 1.1em;
+    .filtros {
+      display: flex;
+      gap: 1em;
+      padding: 1.5em;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
     }
 
     .grid {
-         display: grid;
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1em;
       padding: 2em;
@@ -54,16 +55,6 @@
       margin-bottom: 1em;
     }
 
-    .card h3 {
-      margin: 0.3em 0;
-      color: #c60c30;
-    }
-
-    .card p {
-      font-size: 0.95em;
-      text-align: center;
-    }
-
     footer {
       text-align: center;
       padding: 2em;
@@ -73,197 +64,221 @@
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Museo de Camisetas de la Roja</h1>
-    <p>Una colección única de camisetas históricas y raras de Chile 🇨🇱</p>
-  </header>
-  <section class="filtros">
-    <input type="text" id="buscar" placeholder="Buscar camiseta...">
 
-    <select id="decada">
-      <option value="">Todas las décadas</option>
-      <option value="1970">Años 70</option>
-      <option value="1980">Años 80</option>
-      <option value="1990">Años 90</option>
-      <option value="2000">Años 2000</option>
-      <option value="2010">Años 2010</option>
-      <option value="2020">Años 2020</option>
-    </select>
+<header>
+  <h1>Museo de Camisetas de la Roja</h1>
+  <p>Una colección única de camisetas históricas y raras de Chile 🇨🇱</p>
+</header>
 
-    <select id="tipo">
-      <option value="">Todos los tipos</option>
-      <option value="Local">Local</option>
-      <option value="Suplente">Suplente</option>
-      <option value="Alternativa">Alternativa</option>
-    </select>
+<section class="filtros">
+  <input type="text" id="buscar" placeholder="Buscar camiseta...">
 
-    <select id="rareza">
-      <option value="">Todas las rarezas</option>
-      <option value="Rara">Rara</option>
-      <option value="Muy rara">Muy rara</option>
-    </select>
-  </section>
+  <select id="decada">
+    <option value="">Todas las décadas</option>
+    <option value="1970">Años 70</option>
+    <option value="1980">Años 80</option>
+    <option value="1990">Años 90</option>
+    <option value="2000">Años 2000</option>
+    <option value="2010">Años 2010</option>
+    <option value="2020">Años 2020</option>
+  </select>
 
-<section class="grid" id="galeria">
-    <!-- Aquí se insertan dinámicamente las camisetas -->
-  </section>
+  <select id="tipo">
+    <option value="">Todos los tipos</option>
+    <option value="Local">Local</option>
+    <option value="Suplente">Suplente</option>
+    <option value="Alternativa">Alternativa</option>
+  </select>
 
-  <footer>
-    Proyecto personal sin fines de lucro. Fuente de imágenes: registros históricos y archivos personales.
-  </footer>
+  <select id="rareza">
+    <option value="">Todas las rarezas</option>
+    <option value="Rara">Rara</option>
+    <option value="Muy rara">Muy rara</option>
+  </select>
 
-  <script>
-const camisetas = [
-  {
-        año: 1979,
-        torneo: "Kit Transición Adidas 1979",
-        tipo: "Titular",
-        imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen de WhatsApp 2025-11-10 a las 15.14.07_5074e6bd.jpg",
-        rareza: "Rara",
-        descripcion: "Camiseta usada desde el 13 de junio de 1979 al 18 de julio de 1979, fue el primer kit con logo visible de una marca siendo Adidas la primer marca oficial en la camiseta de la selección chilena"
-  {
-        año: 1982,
-        torneo: "Amistosos Previos Mundial España 82",
-        tipo: "Suplente",
-        imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen de WhatsApp 2025-11-10 a las 15.14.07_5074e6bd.jpg",
-        rareza: "Rara",
-        descripcion: "Camiseta usada en la previa del mundial España 1982, destaca por su color azul en lugar del color blanco usado en la cmiseta suplente y del rojo titular, se usó principalmente en partidos contra clubes y contra Paraguay"
-      },
-  {
-        año: 1982,
-        torneo: "Mundial de Fútbol España 82",
-        tipo: "Suplente",
-        imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen de WhatsApp 2025-11-10 a las 15.14.07_5074e6bd.jpg",
-        rareza: "Rara",
-        descripcion: "Camiseta prevista para el mundial España 1982, no se pudo usar debido a que no hubo choque cromatico en los partidos de la selección chilena en fase de grupos. Esta camiseta fue recuperada de los utileros de la ACF/ANFP"
-      },
-  {
-    año: 1986,
-    torneo: "Amistoso contra Brasil 7 de mayo de 1986",
-    tipo: "Local",
-    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/formacion-chile-amistoso-7-mayo-1986.jpg",
-    rareza: "Rara",
-    descripcion: "Camiseta Umbro usada únicamente en este partido, con una versión exclusiva del escudo de la selección chilena."
-  },
-  {
-    año: 1986,
-    torneo: "Juegos ODESUR 86",
-    tipo: "Local",
-    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20231352.png",
-    rareza: "Muy rara",
-    descripcion: "Usada durante los Juegos ODESUR 1986. Diseño con cuello blanco en V con solapa y franjas verticales en el torso."
-  },
-  {
-    año: 1987,
-    torneo: "Mundial Sub-20 modelo 1",
-    tipo: "Local",
-    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/images%20(1).jpeg",
-    rareza: "Rara",
-    descripcion: "Versión especial del Sub-20 de 1987, con cuello en V, solapa y detalles únicos no repetidos."
-  },
-  {
-    año: 1987,
-    torneo: "Mundial Sub-20 modelo 1",
-    tipo: "Suplente",
-    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen%20de%20WhatsApp%202025-10-04%20a%20las%2022.59.30_783dffd4.jpg",
-    rareza: "Rara",
-    descripcion: "Versión especial del Sub-20 de 1987, con cuello redondo sin solapa cuando lo usual en esa época vistiendo Puma era con solapa."
-  },
-  {
-    año: 1987,
-    torneo: "Mundial Sub-20 modelo 2",
-    tipo: "Local",
-    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20232737.png",
-    rareza: "Rara",
-    descripcion: "Versión especial del Sub-20 de 1987, con cuello en V más alargado que en el modelo de 1985."
-  },
-  {
-    año: 1987,
-    torneo: "Mundial Sub-20 modelo 2",
-    tipo: "Suplente",
-    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20232926.png",
-    rareza: "Rara",
-    descripcion: "Versión especial del Sub-20 de 1987, con cuello en V y detalles en color rojo cuando lo usual era detalles en azul para la suplente."
-  },
-   {
-        año: 2006,
-        torneo: "Amistoso contra Colo-Colo 12 de abril de 2006",
-        tipo: "Local",
-        imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen de WhatsApp 2025-11-10 a las 15.14.07_1b6ef2e4.jpg",
-        rareza: "Rara",
-        descripcion: "Camiseta Brooks usada únicamente en este partido en lugar del kit Brooks 2004-2006, destaca por ser de color azul (color no usado en una camiseta de campo desde 1982) y por su cuello en V que Brooks nunca volvió a utilizar. El partido se realizó a puertas cerradas, pero con la presencia de periodistas que indican un triunfo 2-1 a favor de 'La Roja' "
-      },
-      {
-        año: 2008,
-        torneo: "Kit Femenino Mundial Sub-20 2008",
-        tipo: "Local",
-        imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/",
-        rareza: "Rara",
-        descripcion: "Durante el conlficto legal entre Brooks y la ANFP la indumentaria de la selección femenina a partir del sudamericano sub-20 de marzo de 2008 hasta el final del mundial sub-20 en diciembre la selección femenina viste este kit Puma que recuerda a la camiseta Mundial Sub-20 1987 modelo 1."
-      },
-  {
-    año: 2024,
-    torneo: "Rueda de prensa Colección Adicolor 2024",
-    tipo: "Alternativa",
-    imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-03-31%20221225.png",
-    rareza: "Rara",
-    descripcion: "Utilizada en ruedas de prensa, disponible en tiendas. Estilo minimalista y moderno."
+  <select id="orden">
+    <option value="">Ordenar por año</option>
+    <option value="asc">Año: Ascendente</option>
+    <option value="desc">Año: Descendente</option>
+  </select>
+</section>
+
+<section class="grid" id="galeria"></section>
+
+<footer>
+  Proyecto personal sin fines de lucro. Fuente de imágenes: archivos y registros históricos.
+</footer>
+
+<script>
+  const camisetas = [
+    {
+      año: 1979,
+      torneo: "Kit Transición Adidas 1979",
+      tipo: "Local",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen%20de%20WhatsApp%202025-11-10%20a%20las%2015.14.07_5074e6bd.jpg",
+      rareza: "Rara",
+      descripcion: "Primer kit con logo visible en la camiseta de Chile, usado entre junio y julio de 1979."
+    },
+    {
+      año: 1982,
+      torneo: "Amistosos previos Mundial España 82",
+      tipo: "Suplente",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen%20de%20WhatsApp%202025-11-10%20a%20las%2015.14.07_5074e6bd.jpg",
+      rareza: "Rara",
+      descripcion: "Camiseta azul no oficial usada en partidos preparatorios previos al mundial."
+    },
+    {
+      año: 1982,
+      torneo: "Mundial de Fútbol España 82",
+      tipo: "Suplente",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen%20de%20WhatsApp%202025-11-10%20a%20las%2015.14.07_5074e6bd.jpg",
+      rareza: "Rara",
+      descripcion: "Camiseta suplente prevista para el mundial pero nunca utilizada por ausencia de choque cromático."
+    },
+    {
+      año: 1986,
+      torneo: "Amistoso vs Brasil (7 mayo 1986)",
+      tipo: "Local",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/formacion-chile-amistoso-7-mayo-1986.jpg",
+      rareza: "Rara",
+      descripcion: "Camiseta Umbro usada solo en este partido con escudo exclusivo."
+    },
+    {
+      año: 1986,
+      torneo: "Juegos ODESUR 1986",
+      tipo: "Local",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20231352.png",
+      rareza: "Muy rara",
+      descripcion: "Diseño con solapa y cuello blanco, único en su tipo."
+    },
+    {
+      año: 1987,
+      torneo: "Mundial Sub-20 modelo 1",
+      tipo: "Local",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/images%20(1).jpeg",
+      rareza: "Rara",
+      descripcion: "Diseño con solapa y detalles nunca repetidos."
+    },
+    {
+      año: 1987,
+      torneo: "Mundial Sub-20 modelo 1",
+      tipo: "Suplente",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen%20de%20WhatsApp%202025-10-04%20a%20las%2022.59.30_783dffd4.jpg",
+      rareza: "Rara",
+      descripcion: "Versión con cuello redondo sin solapa, distinta al estándar Puma de la época."
+    },
+    {
+      año: 1987,
+      torneo: "Mundial Sub-20 modelo 2",
+      tipo: "Local",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20232737.png",
+      rareza: "Rara",
+      descripcion: "Cuello en V más alargado que modelos anteriores."
+    },
+    {
+      año: 1987,
+      torneo: "Mundial Sub-20 modelo 2",
+      tipo: "Suplente",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-10-13%20232926.png",
+      rareza: "Rara",
+      descripcion: "Detalles en rojo en vez de azul en la versión suplente."
+    },
+    {
+      año: 2006,
+      torneo: "Amistoso vs Colo-Colo (12 abril 2006)",
+      tipo: "Local",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Imagen%20de%20WhatsApp%202025-11-10%20a%20las%2015.14.07_1b6ef2e4.jpg",
+      rareza: "Rara",
+      descripcion: "Color azul poco común en Brooks, usado solo en este partido."
+    },
+    {
+      año: 2008,
+      torneo: "Kit Femenino Mundial Sub-20 2008",
+      tipo: "Local",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/F633526_ROJITA280.jpg",
+      rareza: "Rara",
+      descripcion: "Kit Puma utilizado durante el conflicto legal con Brooks por la selección femenina durante todo 2008, desde el sudamericano sub-20 en marzo hasta el final del mundial en diciembre."
+    },
+    {
+      año: 2024,
+      torneo: "Colección Adicolor – Rueda de prensa",
+      tipo: "Alternativa",
+      imagen: "https://raw.githubusercontent.com/dacf01/P-gina-web-museo-selecci-n-chilena/main/Captura%20de%20pantalla%202025-03-31%20221225.png",
+      rareza: "Rara",
+      descripcion: "Camiseta moderna utilizada en actividades oficiales."
+    }
+  ];
+
+  const galeria = document.getElementById("galeria");
+  const buscarInput = document.getElementById("buscar");
+  const decadaSelect = document.getElementById("decada");
+  const tipoSelect = document.getElementById("tipo");
+  const rarezaSelect = document.getElementById("rareza");
+  const ordenSelect = document.getElementById("orden");
+
+  function mostrarCamisetas(lista) {
+    galeria.innerHTML = "";
+    lista.forEach(c => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <img src="${c.imagen}" alt="Camiseta ${c.año}">
+        <h3>${c.año} – ${c.torneo}</h3>
+        <p><strong>Tipo:</strong> ${c.tipo} | <strong>Rareza:</strong> ${c.rareza}</p>
+        <p>${c.descripcion}</p>
+      `;
+      galeria.appendChild(div);
+    });
   }
-];
-const galeria = document.getElementById("galeria");
-    const buscarInput = document.getElementById("buscar");
-    const decadaSelect = document.getElementById("decada");
-    const tipoSelect = document.getElementById("tipo");
-    const rarezaSelect = document.getElementById("rareza");
 
-    function mostrarCamisetas(lista) {
-      galeria.innerHTML = "";
-      lista.forEach(c => {
-        const div = document.createElement("div");
-        div.className = "card";
-        div.innerHTML = `
-          <img src="${c.imagen}" alt="Camiseta ${c.año}">
-          <h3>${c.año} – ${c.torneo}</h3>
-          <p><strong>Tipo:</strong> ${c.tipo} | <strong>Rareza:</strong> ${c.rareza}</p>
-          <p>${c.descripcion}</p>
-        `;
-        galeria.appendChild(div);
-      });
-    }
-   function filtrar() {
-      const texto = buscarInput.value.toLowerCase();
-      const decada = decadaSelect.value;
-      const tipo = tipoSelect.value;
-      const rareza = rarezaSelect.value;
+  function filtrar() {
+    const texto = buscarInput.value.toLowerCase();
+    const decada = decadaSelect.value;
+    const tipo = tipoSelect.value;
+    const rareza = rarezaSelect.value;
+    const orden = ordenSelect.value;
 
-      const filtradas = camisetas.filter(c => {
-        const coincideTexto =
-          c.año.toString().includes(texto) ||
-          c.torneo.toLowerCase().includes(texto) ||
-          c.tipo.toLowerCase().includes(texto) ||
-          c.rareza.toLowerCase().includes(texto) ||
-          c.descripcion.toLowerCase().includes(texto);
+    let filtradas = camisetas.filter(c => {
 
-        const coincideDecada = decada === "" || Math.floor(c.año / 10) * 10 == decada;
-        const coincideTipo = tipo === "" || c.tipo === tipo;
-        const coincideRareza = rareza === "" || c.rareza === rareza;
+      const coincideTexto =
+        c.año.toString().includes(texto) ||
+        c.torneo.toLowerCase().includes(texto) ||
+        c.tipo.toLowerCase().includes(texto) ||
+        c.rareza.toLowerCase().includes(texto) ||
+        c.descripcion.toLowerCase().includes(texto);
 
-        return coincideTexto && coincideDecada && coincideTipo && coincideRareza;
-      });
+      const coincideDecada = decada === "" || Math.floor(c.año / 10) * 10 == decada;
+      const coincideTipo = tipo === "" || c.tipo === tipo;
+      const coincideRareza = rareza === "" || c.rareza === rareza;
 
-      mostrarCamisetas(filtradas);
+      return coincideTexto && coincideDecada && coincideTipo && coincideRareza;
+    });
+
+    // ORDENAR POR AÑO
+    if (orden === "asc") {
+      filtradas.sort((a, b) => a.año - b.año);
+    } else if (orden === "desc") {
+      filtradas.sort((a, b) => b.año - a.año);
     }
 
-    buscarInput.addEventListener("input", filtrar);
-    decadaSelect.addEventListener("change", filtrar);
-    tipoSelect.addEventListener("change", filtrar);
-    rarezaSelect.addEventListener("change", filtrar);
+    mostrarCamisetas(filtradas);
+  }
 
-    mostrarCamisetas(camisetas);
-  </script>
+  buscarInput.addEventListener("input", filtrar);
+  decadaSelect.addEventListener("change", filtrar);
+  tipoSelect.addEventListener("change", filtrar);
+  rarezaSelect.addEventListener("change", filtrar);
+  ordenSelect.addEventListener("change", filtrar);
+
+  mostrarCamisetas(camisetas);
+</script>
+
 </body>
 </html>
+
+
 
 
 
